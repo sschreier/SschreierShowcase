@@ -1,0 +1,17 @@
+{% sw_extends '@Storefront/storefront/layout/footer/footer.html.twig' %}
+
+{% block layout_footer_vat %}
+    {% block layout_footer_vat_showcase_before %}{% endblock %}
+
+    {% if not(config('SschreierShowcase.config.showPrices')) %}
+        {% block layout_footer_vat_showcase_custom %}{% endblock %}
+    {% else %}
+        {% block layout_footer_vat_showcase_default_before %}{% endblock %}
+
+        {{ parent() }}
+
+        {% block layout_footer_vat_showcase_default_after %}{% endblock %}
+    {% endif %}
+
+    {% block layout_footer_vat_showcase_after %}{% endblock %}
+{% endblock %}

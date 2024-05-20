@@ -1,0 +1,17 @@
+{% sw_extends '@Storefront/storefront/layout/header/search-suggest.html.twig' %}
+
+{% block layout_search_suggest_result_price %}
+    {% block layout_search_suggest_result_price_showcase_before %}{% endblock %}
+
+    {% if not(config('SschreierShowcase.config.showPrices')) %}
+        {% block layout_search_suggest_result_price_showcase_custom %}{% endblock %}
+    {% else %}
+        {% block layout_search_suggest_result_price_showcase_default_before %}{% endblock %}
+
+        {{ parent() }}
+
+        {% block layout_search_suggest_result_price_showcase_default_after %}{% endblock %}
+    {% endif %}
+
+    {% block layout_search_suggest_result_price_showcase_after %}{% endblock %}
+{% endblock %}

@@ -1,0 +1,17 @@
+{% sw_extends '@Storefront/storefront/component/listing/filter-panel.html.twig' %}
+
+{% block component_filter_panel_item_price %}
+    {% block component_filter_panel_item_price_showcase_before %}{% endblock %}
+
+    {% if not(config('SschreierShowcase.config.showPrices')) %}
+        {% block component_filter_panel_item_price_showcase_custom %}{% endblock %}
+    {% else %}
+        {% block component_filter_panel_item_price_showcase_default_before %}{% endblock %}
+
+        {{ parent() }}
+
+        {% block component_filter_panel_item_price_showcase_default_after %}{% endblock %}
+    {% endif %}
+
+    {% block component_filter_panel_item_price_showcase_after %}{% endblock %}
+{% endblock %}

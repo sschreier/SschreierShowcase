@@ -1,0 +1,17 @@
+{% sw_extends '@Storefront/storefront/layout/header/search.html.twig' %}
+
+{% block layout_header_search %}
+    {% block layout_header_search_showcase_before %}{% endblock %}
+
+    <div class="header-search-container{% if config('SschreierShowcase.config.alignSearchFieldToRight') %} align-to-right{% endif %}">
+
+    {% block layout_header_search_showcase_inner_before %}{% endblock %}
+
+    {{ parent() }}
+
+    {% block layout_header_search_showcase_inner_after %}{% endblock %}
+
+    </div>
+
+    {% block layout_header_search_showcase_after %}{% endblock %}
+{% endblock %}

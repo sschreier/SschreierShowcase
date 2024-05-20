@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/master/src/Core/System/SystemConfig/Schema/config.xsd">
+
+    <card>
+        <title>general settings</title>
+        <title lang="de-DE">Allgemeine Einstellungen</title>
+
+        <input-field type="bool">
+            <name>showSearchField</name>
+            <label>show search field and leave search reachable</label>
+            <label lang="de-DE">Suchfeld anzeigen und Suche erreichbar lassen</label>
+            <defaultValue>false</defaultValue>
+        </input-field>
+
+        <input-field type="bool">
+            <name>showWishListButton</name>
+            <label>show wish list button and leave wish list reachable</label>
+            <label lang="de-DE">Merkzettel-Schaltfläche anzeigen und Merkzettel erreichbar lassen</label>
+            <defaultValue>false</defaultValue>
+        </input-field>
+
+        <input-field type="bool">
+            <name>showCustomerAccountButton</name>
+            <label>show customer account button and leave account reachable</label>
+            <label lang="de-DE">Kundenkonto-Schaltfläche anzeigen und Kundenkonto erreichbar lassen</label>
+            <defaultValue>false</defaultValue>
+        </input-field>
+
+        <input-field type="bool">
+            <name>showCartButton</name>
+            <label>show cart button and leave checkout reachable</label>
+            <label lang="de-DE">Warenkorb-Schaltfläche anzeigen und Checkout erreichbar lassen</label>
+            <defaultValue>false</defaultValue>
+        </input-field>
+
+        <input-field type="bool">
+            <name>showPrices</name>
+            <label>show prices</label>
+            <label lang="de-DE">Preise anzeigen</label>
+            <defaultValue>false</defaultValue>
+        </input-field>
+
+        <input-field type="bool">
+            <name>alignSearchFieldToRight</name>
+            <label>align the search field to the right</label>
+            <label lang="de-DE">Suchfeld rechtsbündig ausrichten</label>
+            <defaultValue>false</defaultValue>
+        </input-field>
+    </card>
+    <card>
+        <title>settings for the redirection</title>
+        <title lang="de-DE">Einstellungen für die Weiterleitung</title>
+
+        <input-field type="bool">
+            <name>redirectionIsActive</name>
+            <label>active</label>
+            <label lang="de-DE">aktiv</label>
+            <defaultValue>true</defaultValue>
+        </input-field>
+
+        <input-field type="single-select">
+            <name>redirectTarget</name>
+            <options>
+                <option>
+                    <id>homepage</id>
+                    <name>to home page</name>
+                    <name lang="de-DE">zur Startseite</name>
+                </option>
+                <option>
+                    <id>category</id>
+                    <name>to a category</name>
+                    <name lang="de-DE">zu einer Kategorie</name>
+                </option>
+                <option>
+                    <id>landing_page</id>
+                    <name>to a landingpage</name>
+                    <name lang="de-DE">zu einer Landingpage</name>
+                </option>
+            </options>
+            <label>redirect</label>
+            <label lang="de-DE">Umleitung</label>
+            <defaultValue>homepage</defaultValue>
+        </input-field>
+
+        <component name="sw-entity-single-select">
+            <name>redirectToCategory</name>
+            <entity>category</entity>
+            <label>category to redirect to</label>
+            <label lang="de-DE">Kategorie, auf die umgeleitet werden soll</label>
+        </component>
+
+        <component name="sw-entity-single-select">
+            <name>redirectToLandingpage</name>
+            <entity>landing_page</entity>
+            <label>landingpage to redirect to</label>
+            <label lang="de-DE">Landingpage, auf die umgeleitet werden soll</label>
+        </component>
+    </card>
+</config>

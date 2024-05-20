@@ -1,0 +1,75 @@
+{% sw_extends '@Storefront/storefront/layout/header/header.html.twig' %}
+
+{% block layout_header_navigation %}
+    {% block layout_header_navigation_showcase_before %}{% endblock %}
+
+    <div class="header-row-container{% if not(config('SschreierShowcase.config.showSearchField')) %} hide-header-search-col{% endif %}">
+        {{ parent() }}
+    </div>
+
+    {% block layout_header_navigation_showcase_after %}{% endblock %}
+{% endblock %}
+
+{% block layout_header_search_toggle %}
+    {% block layout_header_search_toggle_showcase_before %}{% endblock %}
+
+    {% if not(config('SschreierShowcase.config.showSearchField')) %}
+        {% block layout_header_search_toggle_showcase_custom %}{% endblock %}
+    {% else %}
+        {% block layout_header_search_toggle_showcase_default_before %}{% endblock %}
+
+        {{ parent() }}
+
+        {% block layout_header_search_toggle_showcase_default_after %}{% endblock %}
+    {% endif %}
+
+    {% block layout_header_search_toggle_showcase_after %}{% endblock %}
+{% endblock %}
+
+{% block layout_header_actions_wishlist %}
+    {% block layout_header_actions_wishlist_showcase_before %}{% endblock %}
+
+    {% if not(config('SschreierShowcase.config.showWishListButton')) %}
+        {% block layout_header_actions_wishlist_showcase_custom %}{% endblock %}
+    {% else %}
+        {% block layout_header_actions_wishlist_showcase_default_before %}{% endblock %}
+
+        {{ parent() }}
+
+        {% block layout_header_actions_wishlist_showcase_default_after %}{% endblock %}
+    {% endif %}
+
+    {% block layout_header_actions_wishlist_showcase_after %}{% endblock %}
+{% endblock %}
+
+{% block layout_header_actions_account %}
+    {% block layout_header_actions_account_showcase_before %}{% endblock %}
+
+    {% if not(config('SschreierShowcase.config.showCustomerAccountButton')) %}
+        {% block layout_header_actions_account_showcase_custom %}{% endblock %}
+    {% else %}
+        {% block layout_header_actions_account_showcase_default_before %}{% endblock %}
+
+        {{ parent() }}
+
+        {% block layout_header_actions_account_showcase_default_after %}{% endblock %}
+    {% endif %}
+
+    {% block layout_header_actions_account_showcase_after %}{% endblock %}
+{% endblock %}
+
+{% block layout_header_actions_cart %}
+    {% block layout_header_actions_cart_showcase_before %}{% endblock %}
+
+    {% if not(config('SschreierShowcase.config.showCartButton')) %}
+        {% block layout_header_actions_cart_showcase_custom %}{% endblock %}
+    {% else %}
+        {% block layout_header_actions_cart_showcase_default_before %}{% endblock %}
+
+        {{ parent() }}
+
+        {% block layout_header_actions_cart_showcase_default_after %}{% endblock %}
+    {% endif %}
+
+    {% block layout_header_actions_cart_showcase_after %}{% endblock %}
+{% endblock %}

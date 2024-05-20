@@ -1,0 +1,17 @@
+.header-row-container {
+  &.hide-header-search-col {
+    .header-search-col {
+      .header-search-container {
+        display: none;
+      }
+    }
+  }
+
+  .header-search-container {
+    &.align-to-right {
+      .header-search {
+        margin-right: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{% sw_extends '@Storefront/storefront/page/product-detail/meta.html.twig' %}
+
+{% block layout_head_meta_tags_opengraph %}
+    {% block layout_head_meta_tags_opengraph_showcase_before %}{% endblock %}
+
+    {% if config('SschreierShowcase.config.showPrices') %}
+        {% block layout_head_meta_tags_opengraph_showcase_default_before %}{% endblock %}
+
+        {{ parent() }}
+
+        {% block layout_head_meta_tags_opengraph_showcase_default_after %}{% endblock %}
+    {% else %}
+        {% block layout_head_meta_tags_opengraph_showcase_custom %}
+            <meta property="og:type"
+                  content="product">
+            <meta property="og:site_name"
+                  content="{{ config('core.basicInformation.shopName') }}">
+            <meta property="og:url"
+                  content="{{ seoUrl('frontend.detail.page', { productId: page.product.id }) }}">
+            <meta property="og:title"
+                  content="{{ metaTitle }}">
+
+            <meta property="og:description"
+                  content="{{ metaDescription }}">
+            <meta property="og:image"
+                  content="{{ page.product.cover.media.url }}">
+
+            {% if page.product.manufacturer %}
+                <meta property="product:brand"
+                      content="{{ page.product.manufacturer.translated.name }}">
+            {% endif %}
+
+            {% block layout_head_meta_tags_opengraph_showcase_custom_price %}{% endblock %}
+
+            <meta property="product:product_link"
+                  content="{{ seoUrl('frontend.detail.page', { productId: page.product.id }) }}">
+
+            <meta name="twitter:card"
+                  content="product">
+            <meta name="twitter:site"
+                  content="{{ config('core.basicInformation.shopName') }}">
+            <meta name="twitter:title"
+                  content="{{ metaTitle }}">
+            <meta name="twitter:description"
+                  content="{{ metaDescription }}">
+            <meta name="twitter:image"
+                  content="{{ page.product.cover.media.url }}">
+        {% endblock %}
+    {% endif %}
+
+    {% block layout_head_meta_tags_opengraph_showcase_after %}{% endblock %}
+{% endblock %}

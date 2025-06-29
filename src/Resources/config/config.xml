@@ -8,36 +8,36 @@
 
         <input-field type="bool">
             <name>showSearchField</name>
-            <label>show search field and leave search reachable</label>
-            <label lang="de-DE">Suchfeld anzeigen und Suche erreichbar lassen</label>
+            <label>continue to show the search field and keep the search accessible</label>
+            <label lang="de-DE">das Suchfeld weiterhin anzeigen und die Suche weiterhin erreichbar lassen</label>
             <defaultValue>false</defaultValue>
         </input-field>
 
         <input-field type="bool">
             <name>showWishListButton</name>
-            <label>show wish list button and leave wish list reachable</label>
-            <label lang="de-DE">Merkzettel-Schaltfläche anzeigen und Merkzettel erreichbar lassen</label>
+            <label>continue to show the wish list button and keep the wish list accessible</label>
+            <label lang="de-DE">die Merkzettel-Schaltfläche weiterhin anzeigen und den Merkzettel weiterhin erreichbar lassen</label>
             <defaultValue>false</defaultValue>
         </input-field>
 
         <input-field type="bool">
             <name>showCustomerAccountButton</name>
-            <label>show customer account button and leave account reachable</label>
-            <label lang="de-DE">Kundenkonto-Schaltfläche anzeigen und Kundenkonto erreichbar lassen</label>
+            <label>continue to show the customer account button and keep the account accessible</label>
+            <label lang="de-DE">die Kundenkonto-Schaltfläche weiterhin anzeigen und das Kundenkonto weiterhin erreichbar lassen</label>
             <defaultValue>false</defaultValue>
         </input-field>
 
         <input-field type="bool">
             <name>showCartButton</name>
-            <label>show cart button and leave checkout reachable</label>
-            <label lang="de-DE">Warenkorb-Schaltfläche anzeigen und Checkout erreichbar lassen</label>
+            <label>continue to show the cart button and keep the checkout accessible</label>
+            <label lang="de-DE">die Warenkorb-Schaltfläche weiterhin anzeigen und den Checkout weiterhin erreichbar lassen</label>
             <defaultValue>false</defaultValue>
         </input-field>
 
         <input-field type="bool">
             <name>showPrices</name>
-            <label>show prices</label>
-            <label lang="de-DE">Preise anzeigen</label>
+            <label>continue to show prices</label>
+            <label lang="de-DE">Preise weiterhin anzeigen</label>
             <defaultValue>false</defaultValue>
         </input-field>
 

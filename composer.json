@@ -1,43 +1,43 @@
 {
-  "name": "sschreier/sschreiershowcase",
-  "description": "shop without buy function as a pure showcase",
-  "version": "1.0.3",
-  "type": "shopware-platform-plugin",
-  "license": "GPL-3.0-or-later",
-  "authors": [
-    {
-      "name": "Sebastian Schreier",
-      "role": "Manufacturer"
-    }
-  ],
-  "require": {
-    "shopware/core": "~6.6.0",
-    "shopware/storefront": "~6.6.0"
-  },
-  "extra": {
-    "shopware-plugin-class": "Sschreier\\Showcase\\SschreierShowcase",
-    "plugin-icon": "src/Resources/config/plugin.png",
-    "copyright": "Sebastian Schreier",
-    "label": {
-      "de-DE": "Shop ohne Kauf-Funktion als reines Schaufenster",
-      "en-GB": "shop without buy function as a pure showcase"
+    "name": "sschreier/sschreiershowcase",
+    "description": "shop without buy function as a pure showcase",
+    "version": "1.1.0",
+    "type": "shopware-platform-plugin",
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Sebastian Schreier",
+            "role": "Manufacturer"
+        }
+    ],
+    "require": {
+        "shopware/core": "~6.7.0",
+        "shopware/storefront": "~6.7.0"
     },
-    "description": {
-      "de-DE": "Mit der Erweiterung kann ein Shop ohne Kauf-Funktion und somit als reines Schaufenster umgesetzt werden. Dazu kann man das Suchfeld, die Merkzettel-, Kundenkonto- und Warenkorb-Schaltfläche und die Preise ausblenden. Insofern die Funktionen ausgeblendet sind, werden die Seiten auf ein selbst festgelegtes Ziel weitergeleitet. Die Weiterleitung kann auf die Startseite, eine Kategorie oder eine Landingpage erfolgen.",
-      "en-GB": "With the extension, a shop can be implemented without a buy function and therefore as a pure showcase. To do this, you can hide the search field, the wish list button, the customer account button and the cart button and the prices. If the functions are hidden, the pages are redirected to a self-defined target. The redirection can be to the homepage, a category or a landing page."
+    "extra": {
+        "shopware-plugin-class": "Sschreier\\Showcase\\SschreierShowcase",
+        "plugin-icon": "src/Resources/config/plugin.png",
+        "copyright": "Sebastian Schreier",
+        "label": {
+            "de-DE": "Shop ohne Kauf-Funktion als reines Schaufenster",
+            "en-GB": "shop without buy function as a pure showcase"
+        },
+        "description": {
+            "de-DE": "Mit der Erweiterung kann ein Shop ohne Kauf-Funktion und somit als reines Schaufenster umgesetzt werden. Dazu kann man das Suchfeld, die Merkzettel-, Kundenkonto- und Warenkorb-Schaltfläche und die Preise ausblenden. Insofern die Funktionen ausgeblendet sind, werden die Seiten auf ein selbst festgelegtes Ziel weitergeleitet. Die Weiterleitung kann auf die Startseite, eine Kategorie oder eine Landingpage erfolgen.",
+            "en-GB": "With the extension, a shop can be implemented without a buy function and therefore as a pure showcase. To do this, you can hide the search field, the wish list button, the customer account button and the cart button and the prices. If the functions are hidden, the pages are redirected to a self-defined target. The redirection can be to the homepage, a category or a landing page."
+        },
+        "manufacturerLink": {
+            "de-DE": "https://www.sebastianschreier.de",
+            "en-GB": "https://www.sebastianschreier.de"
+        },
+        "supportLink": {
+            "de-DE": "https://www.sebastianschreier.de",
+            "en-GB": "https://www.sebastianschreier.de"
+        }
     },
-    "manufacturerLink": {
-      "de-DE": "https://www.sebastianschreier.de",
-      "en-GB": "https://www.sebastianschreier.de"
-    },
-    "supportLink": {
-      "de-DE": "https://www.sebastianschreier.de",
-      "en-GB": "https://www.sebastianschreier.de"
+    "autoload": {
+        "psr-4": {
+            "Sschreier\\Showcase\\": "src/"
+        }
     }
-  },
-  "autoload": {
-    "psr-4": {
-      "Sschreier\\Showcase\\": "src/"
-    }
-  }
 }

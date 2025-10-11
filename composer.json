@@ -1,7 +1,7 @@
 {
     "name": "sschreier/sschreiershowcase",
     "description": "shop without buy function as a pure showcase",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "type": "shopware-platform-plugin",
     "license": "GPL-3.0-or-later",
     "authors": [
@@ -27,12 +27,12 @@
             "en-GB": "With the extension, a shop can be implemented without a buy function and therefore as a pure showcase. To do this, you can hide the search field, the wish list button, the customer account button and the cart button and the prices. If the functions are hidden, the pages are redirected to a self-defined target. The redirection can be to the homepage, a category or a landing page."
         },
         "manufacturerLink": {
-            "de-DE": "https://www.sebastianschreier.de",
-            "en-GB": "https://www.sebastianschreier.de"
+            "de-DE": "https://www.web-solutions-dresden.de",
+            "en-GB": "https://www.web-solutions-dresden.de"
         },
         "supportLink": {
-            "de-DE": "https://www.sebastianschreier.de",
-            "en-GB": "https://www.sebastianschreier.de"
+            "de-DE": "https://www.web-solutions-dresden.de",
+            "en-GB": "https://www.web-solutions-dresden.de"
         }
     },
     "autoload": {

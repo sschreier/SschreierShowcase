@@ -94,48 +94,48 @@ bin/console plugin:install --activate SschreierShowcase
 
 ### home page as pure showcase without search field, wish list button, customer account button and cart button and prices
 
-![home page as pure showcase without search field, wish list button, customer account button and cart button and prices](https://www.sebastianschreier.de/plugins/SschreierShowcase/SschreierShowcase-Image1.jpg)
+![home page as pure showcase without search field, wish list button, customer account button and cart button and prices](https://www.web-solutions-dresden.de/plugins/SschreierShowcase/SschreierShowcase-Image1.jpg)
 
 ### product category as pure showcase without search field, wish list button, customer account button and cart button and prices
 
-![product category as pure showcase without search field, wish list button, customer account button and cart button and prices](https://www.sebastianschreier.de/plugins/SschreierShowcase/SschreierShowcase-Image2.jpg)
+![product category as pure showcase without search field, wish list button, customer account button and cart button and prices](https://www.web-solutions-dresden.de/plugins/SschreierShowcase/SschreierShowcase-Image2.jpg)
 
 ### product detail page as pure showcase without search field, wish list button, customer account button, cart button, prices and buy box
 
-![product detail page as pure showcase without search field, wish list button, customer account button, cart button, prices and buy box](https://www.sebastianschreier.de/plugins/SschreierShowcase/SschreierShowcase-Image3.jpg)
+![product detail page as pure showcase without search field, wish list button, customer account button, cart button, prices and buy box](https://www.web-solutions-dresden.de/plugins/SschreierShowcase/SschreierShowcase-Image3.jpg)
 
 ### home page as pure showcase without wish list button, customer account button, cart button and prices but with search field
 
-![home page as pure showcase without wish list button, customer account button, cart button and prices but with search field](https://www.sebastianschreier.de/plugins/SschreierShowcase/SschreierShowcase-Image4.jpg)
+![home page as pure showcase without wish list button, customer account button, cart button and prices but with search field](https://www.web-solutions-dresden.de/plugins/SschreierShowcase/SschreierShowcase-Image4.jpg)
 
 ### home page as pure showcase without wish list button, customer account button, cart button and prices but with opened search field with no prices
 
-![home page as pure showcase without wish list button, customer account button, cart button and prices but with opened search field with no prices](https://www.sebastianschreier.de/plugins/SschreierShowcase/SschreierShowcase-Image5.jpg)
+![home page as pure showcase without wish list button, customer account button, cart button and prices but with opened search field with no prices](https://www.web-solutions-dresden.de/plugins/SschreierShowcase/SschreierShowcase-Image5.jpg)
 
 ### product category as pure showcase without wish list button, customer account button, cart button and prices but with search field
 
-![product category as pure showcase without wish list button, customer account button, cart button and prices but with search field](https://www.sebastianschreier.de/plugins/SschreierShowcase/SschreierShowcase-Image6.jpg)
+![product category as pure showcase without wish list button, customer account button, cart button and prices but with search field](https://www.web-solutions-dresden.de/plugins/SschreierShowcase/SschreierShowcase-Image6.jpg)
 
 ### product detail page as pure showcase without wish list button, customer account button, cart button, prices and buy box but with search field
 
-![product detail page as pure showcase without wish list button, customer account button, cart button, prices and buy box but with search field](https://www.sebastianschreier.de/plugins/SschreierShowcase/SschreierShowcase-Image7.jpg)
+![product detail page as pure showcase without wish list button, customer account button, cart button, prices and buy box but with search field](https://www.web-solutions-dresden.de/plugins/SschreierShowcase/SschreierShowcase-Image7.jpg)
 
 ### extension configuration for case 1 part 1
 
-![extension configuration for case 1 part 1](https://www.sebastianschreier.de/plugins/SschreierShowcase/SschreierShowcase-Image8.jpg)
+![extension configuration for case 1 part 1](https://www.web-solutions-dresden.de/plugins/SschreierShowcase/SschreierShowcase-Image8.jpg)
 
 ### extension configuration for case 1 part 2
 
-![extension configuration for case 1 part 2](https://www.sebastianschreier.de/plugins/SschreierShowcase/SschreierShowcase-Image9.jpg)
+![extension configuration for case 1 part 2](https://www.web-solutions-dresden.de/plugins/SschreierShowcase/SschreierShowcase-Image9.jpg)
 
 ### extension configuration for case 2 part 1
 
-![extension configuration for case 2 part 1](https://www.sebastianschreier.de/plugins/SschreierShowcase/SschreierShowcase-Image10.jpg)
+![extension configuration for case 2 part 1](https://www.web-solutions-dresden.de/plugins/SschreierShowcase/SschreierShowcase-Image10.jpg)
 
 ### extension configuration for case 2 part 2
 
-![extension configuration for case 2 part 2](https://www.sebastianschreier.de/plugins/SschreierShowcase/SschreierShowcase-Image11.jpg)
+![extension configuration for case 2 part 2](https://www.web-solutions-dresden.de/plugins/SschreierShowcase/SschreierShowcase-Image11.jpg)
 
 ### product page layout without the cms element Buy box
 
-![product page layout without the cms element Buy box](https://www.sebastianschreier.de/plugins/SschreierShowcase/SschreierShowcase-Image12.jpg)
+![product page layout without the cms element Buy box](https://www.web-solutions-dresden.de/plugins/SschreierShowcase/SschreierShowcase-Image12.jpg)

@@ -22,8 +22,10 @@
 
             <meta property="og:description"
                   content="{{ metaDescription }}">
-            <meta property="og:{{ page.product.cover.media.getMediaType().getName() === 'VIDEO' ? 'video' : 'image' }}"
-                  content="{{ page.product.cover.media.url }}">
+            {% if page.product.cover and page.product.cover.media %}
+                <meta property="og:{{ page.product.cover.media.getMediaType().getName() === 'VIDEO' ? 'video' : 'image' }}"
+                      content="{{ page.product.cover.media.url }}">
+            {% endif %}
 
             {% if page.product.manufacturer %}
                 <meta property="product:brand"
@@ -43,8 +45,10 @@
                   content="{{ metaTitle }}">
             <meta name="twitter:description"
                   content="{{ metaDescription }}">
-            <meta name="twitter:image"
-                  content="{{ page.product.cover.media.url }}">
+            {% if page.product.cover and page.product.cover.media %}
+                <meta name="twitter:image"
+                      content="{{ page.product.cover.media.url }}">
+            {% endif %}
         {% endblock %}
     {% endif %}
 

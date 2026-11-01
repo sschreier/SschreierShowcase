@@ -12,122 +12,123 @@ namespace Sschreier\Showcase\Storefront\Subscriber;
 use Shopware\Core\Framework\Adapter\Cache\Event\HttpCacheHitEvent;
 use Shopware\Core\System\SystemConfig\SystemConfigService;
 use Shopware\Storefront\Framework\Routing\Router;
-use Shopware\Storefront\Page\Checkout\Cart\CheckoutCartPageLoadedEvent;
-use Shopware\Storefront\Page\Account\Login\AccountLoginPageLoadedEvent;
-use Shopware\Storefront\Page\Search\SearchPageLoadedEvent;
-use Shopware\Storefront\Page\Wishlist\GuestWishlistPageLoadedEvent;
-use Shopware\Storefront\Page\Wishlist\WishlistPageLoadedEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\Routing\Matcher\RequestMatcherInterface;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Event\RequestEvent;
+use Symfony\Component\HttpKernel\KernelEvents;
 
 class FrontendSubscriber implements EventSubscriberInterface
 {
+    private const RESTRICTED_ROUTES = [
+        'frontend.account.login.page' => 'showCustomerAccountButton',
+        'frontend.checkout.cart.page' => 'showCartButton',
+        'frontend.search.page' => 'showSearchField',
+        'frontend.wishlist.page' => 'showWishListButton',
+    ];
+
     public function __construct(
-        private readonly RequestMatcherInterface $matcher,
         private readonly Router $router,
         private readonly SystemConfigService $systemConfigService,
-    )
-    {
-        $this->salesChannelId = null;
+    ) {
     }
 
     public static function getSubscribedEvents(): array
     {
         return [
-            AccountLoginPageLoadedEvent::class => 'onAccountLoginPageLoaded',
-            CheckoutCartPageLoadedEvent::class => 'onCheckoutCartPageLoaded',
-            SearchPageLoadedEvent::class => 'onSearchLoaded',
+            KernelEvents::REQUEST => ['onKernelRequest', 0],
             HttpCacheHitEvent::class => 'onCachedPageLoaded',
-            GuestWishlistPageLoadedEvent::class => 'onWishlistLoaded',
-            WishlistPageLoadedEvent::class => 'onWishlistLoaded',
         ];
     }
 
-    public function onAccountLoginPageLoaded(AccountLoginPageLoadedEvent $event): void
+    public function onKernelRequest(RequestEvent $event): void
     {
-        $this->salesChannelId = $this->getSalesChannelId($event);
-
-        if ($this->isActive() && !((bool) $this->systemConfigService->get('SschreierShowcase.config.showCustomerAccountButton', $this->salesChannelId))) {
-            $this->redirectRequest();
+        if (!$event->isMainRequest()) {
+            return;
         }
-    }
 
-    public function onCheckoutCartPageLoaded(CheckoutCartPageLoadedEvent $event): void
-    {
-        $this->salesChannelId = $this->getSalesChannelId($event);
-
-        if ($this->isActive() && !((bool) $this->systemConfigService->get('SschreierShowcase.config.showCartButton', $this->salesChannelId))) {
-            $this->redirectRequest();
+        $route = $event->getRequest()->attributes->get('_route');
+        if (!is_string($route)) {
+            return;
         }
-    }
 
-    public function onSearchLoaded(SearchPageLoadedEvent $event): void
-    {
-        $this->salesChannelId = $this->getSalesChannelId($event);
-
-        if ($this->isActive() && !((bool) $this->systemConfigService->get('SschreierShowcase.config.showSearchField', $this->salesChannelId))) {
-            $this->redirectRequest();
+        $response = $this->createRedirectResponse($route, $event->getRequest());
+        if ($response !== null) {
+            $event->setResponse($response);
         }
     }
 
     public function onCachedPageLoaded(HttpCacheHitEvent $event): void
     {
-        if ($this->matcher instanceof RequestMatcherInterface) {
-            $parameters = $this->matcher->matchRequest($event->request);
-        } else {
-            $parameters = $this->matcher->match($event->request->getPathInfo());
+        $route = $event->request->attributes->get('_route');
+        if (!is_string($route)) {
+            $parameters = $this->router->matchRequest($event->request);
+            $route = $parameters['_route'] ?? null;
         }
 
-        $this->salesChannelId = $event->request->attributes->get('sw-sales-channel-id');
-
-        if($this->isActive() && ($parameters['_route'] === "frontend.search.page") && (!((bool) $this->systemConfigService->get('SschreierShowcase.config.showSearchField', $this->salesChannelId)))) {
-            $this->redirectRequest();
+        if (!is_string($route)) {
+            return;
         }
 
-        return;
-    }
-
-    public function onWishlistLoaded(GuestWishlistPageLoadedEvent | WishlistPageLoadedEvent $event): void
-    {
-        $this->salesChannelId = $this->getSalesChannelId($event);
-
-        if ($this->isActive() && !((bool) $this->systemConfigService->get('SschreierShowcase.config.showWishListButton', $this->salesChannelId))) {
-            $this->redirectRequest();
+        $redirect = $this->createRedirectResponse($route, $event->request);
+        if ($redirect === null) {
+            return;
         }
+
+        $response = $event->response;
+        $response->setStatusCode(Response::HTTP_FOUND);
+        $response->setContent('');
+        $response->headers->set('Location', $redirect->getTargetUrl());
+        $response->headers->set('Cache-Control', 'no-store, private');
+        $response->headers->remove('Content-Length');
+        $response->headers->remove('Content-Encoding');
+        $response->headers->remove('Content-Range');
+        $response->headers->remove('ETag');
+        $response->headers->remove('Last-Modified');
     }
 
-    private function getSalesChannelId($event): ?string
+    private function createRedirectResponse(string $route, Request $request): ?RedirectResponse
     {
-        return $event->getRequest()->attributes->get('sw-sales-channel-id');
+        $configKey = self::RESTRICTED_ROUTES[$route] ?? null;
+        if ($configKey === null) {
+            return null;
+        }
+
+        $salesChannelId = $request->attributes->get('sw-sales-channel-id');
+        if (!is_string($salesChannelId)) {
+            $salesChannelId = null;
+        }
+
+        if (!(bool) $this->systemConfigService->get('SschreierShowcase.config.redirectionIsActive', $salesChannelId)) {
+            return null;
+        }
+
+        if ((bool) $this->systemConfigService->get('SschreierShowcase.config.' . $configKey, $salesChannelId)) {
+            return null;
+        }
+
+        return new RedirectResponse($this->getRedirectPath($salesChannelId), Response::HTTP_FOUND);
     }
 
-    private function isActive(): bool
+    private function getRedirectPath(?string $salesChannelId): string
     {
-        return (bool) $this->systemConfigService->get('SschreierShowcase.config.redirectionIsActive', $this->salesChannelId);
-    }
+        $redirectTarget = $this->systemConfigService->get('SschreierShowcase.config.redirectTarget', $salesChannelId);
 
-    private function redirectRequest(): void
-    {
-        $redirectTarget = $this->systemConfigService->get('SschreierShowcase.config.redirectTarget', $this->salesChannelId);
-
-        $path = $this->router->generate('frontend.home.page');
-
-        if ($redirectTarget === "category") {
-            $redirectToCategory = $this->systemConfigService->get('SschreierShowcase.config.redirectToCategory', $this->salesChannelId);
-
-            if ($redirectToCategory !== null) {
-                $path = $this->router->generate('frontend.navigation.page', ['navigationId' => $redirectToCategory]);
+        if ($redirectTarget === 'category') {
+            $categoryId = $this->systemConfigService->get('SschreierShowcase.config.redirectToCategory', $salesChannelId);
+            if (is_string($categoryId) && $categoryId !== '') {
+                return $this->router->generate('frontend.navigation.page', ['navigationId' => $categoryId]);
             }
-        } elseif ($redirectTarget === "landing_page") {
-            $redirectToLandingpage = $this->systemConfigService->get('SschreierShowcase.config.redirectToLandingpage', $this->salesChannelId);
+        }
 
-            if ($redirectToLandingpage !== null) {
-                $path = $this->router->generate('frontend.landing.page', ['landingPageId' => $redirectToLandingpage]);
+        if ($redirectTarget === 'landing_page') {
+            $landingPageId = $this->systemConfigService->get('SschreierShowcase.config.redirectToLandingpage', $salesChannelId);
+            if (is_string($landingPageId) && $landingPageId !== '') {
+                return $this->router->generate('frontend.landing.page', ['landingPageId' => $landingPageId]);
             }
         }
 
-        $response = new RedirectResponse($path, 301);
-        $response->send();
+        return $this->router->generate('frontend.home.page');
     }
 }

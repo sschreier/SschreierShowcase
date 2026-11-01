@@ -33,8 +33,8 @@ An extension to _implement a shop without a buy function_ and therefore as a pur
 - select the category to redirect to (*1)
 - select the landingpage to redirect to (*1)
 
-### (*1): some changes in the settings within the configuration are not immediately visible in the frontend of the shop
-After changing settings specifically for the redirections, you should over and over again "**browse privately**" in a **new window** (in **Google Chrome** you can find the **Incognito mode** at the top right over the button **...** and **New Incognito Window**)
+### (*1): changes to redirection settings
+Redirects use temporary HTTP 302 responses so browsers do not retain outdated permanent targets. Redirection settings are also applied when a page is served from the storefront HTTP cache.
 
 ## How to install the extension
 ### via zip and console (recommended)
